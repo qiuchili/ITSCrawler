@@ -20,6 +20,7 @@ class IssueTracker(object):
 		print('description: {}'.format(self.description))
 		print('type: {}'.format(self.type))
 		print('priority: {}'.format(self.priority))
+		print('status: {}'.format(self.status))
 		print('owner: {}'.format(self.owner))
 		print('creater: {}'.format(self.creater))
 		print('is_private: {}'.format(self.is_private))

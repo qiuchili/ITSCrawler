@@ -16,18 +16,15 @@ root_url = 'https://issues.apache.org/jira/browse/'
 issue_url = os.path.join(root_url, '{}-{}'.format(project,issue_id))
 response = http.request('GET', issue_url)
 web_data = BeautifulSoup(response.data,features="lxml")
-
 tracker = IssueTracker()
 tracker.id = issue_id
 
 summary_raw = web_data.title.string
 summary = summary_raw.replace("- ASF JIRA","").replace("[{}-{}]".format(project,issue_id),"").strip()
-# print('the summary of the issue is: {}'.format(summary))
 tracker.summary = summary
 
 
 description = web_data.find(id="description-val").get_text().strip()
-# print('the description of the issue is: {}'.format(description))
 tracker.description = description
 
 for one_node in web_data.find(id = "issuedetails").find_all('div'):
